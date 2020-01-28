@@ -6,6 +6,10 @@ class CounterBloc extends Bloc {
 
   int counter = 0;
 
+  CounterBloc(){
+    sink.add(counter);
+  }
+
   //StreamController
   final _streamController = StreamController<int>();
 
@@ -13,6 +17,7 @@ class CounterBloc extends Bloc {
   Sink<int> get sink => _streamController.sink;
 
   //Sorties
+  Stream<int> get stream => _streamController.stream;
 
   //Logique de travail
   incrementCounter(){
